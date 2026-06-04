@@ -1,0 +1,14 @@
+AI Engineer
+
+Skills:
+Python
+Machine Learning
+Deep Learning
+TensorFlow
+PyTorch
+Scikit-learn
+
+Projects:
+Image Classification
+Chatbot Development
+Predictive Analytics

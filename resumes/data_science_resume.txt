@@ -1,0 +1,13 @@
+Data Scientist
+
+Skills:
+Python
+Pandas
+NumPy
+SQL
+Statistics
+Machine Learning
+
+Projects:
+Sales Forecasting
+Customer Churn Prediction

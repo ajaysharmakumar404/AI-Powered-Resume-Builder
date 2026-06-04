@@ -1,0 +1,13 @@
+Software Engineer
+
+Skills:
+C++
+Python
+Data Structures
+Algorithms
+OOP
+System Design
+
+Projects:
+Library Management System
+Mini Linux Shell

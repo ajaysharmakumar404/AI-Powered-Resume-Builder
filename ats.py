@@ -1,36 +1,62 @@
-import re
+from skills import KNOWN_SKILLS
 
-def calculate_ats_score(resume_text, job_description):
 
-    resume_text = resume_text.lower()
-    job_description = job_description.lower()
+def extract_skills(text):
 
-    keywords = set(
-        re.findall(r'\b[a-zA-Z+#]+\b', job_description)
+    text = text.lower()
+
+    found = set()
+
+    for category in KNOWN_SKILLS:
+
+        for skill in KNOWN_SKILLS[category]:
+
+            if skill.lower() in text:
+
+                found.add(skill)
+
+    return found
+
+
+def calculate_ats_score(
+        resume_text,
+        job_description):
+
+    resume_skills = extract_skills(
+        resume_text
     )
 
-    keywords = {
-        word
-        for word in keywords
-        if len(word) > 2
-    }
+    jd_skills = extract_skills(
+        job_description
+    )
+    print("Resume Skills:", resume_skills)
+    print("JD Skills:", jd_skills)
+    matched = sorted(
+        resume_skills & jd_skills
+    )
 
-    matched = []
-    missing = []
+    missing = sorted(
+        jd_skills - resume_skills
+    )
 
-    for keyword in keywords:
+    if len(jd_skills) == 0:
 
-        if keyword in resume_text:
-            matched.append(keyword)
-        else:
-            missing.append(keyword)
+        score = 0
 
-    score = 0
+    else:
 
-    if len(keywords) > 0:
         score = round(
-            len(matched) / len(keywords) * 100,
+            len(matched)
+            /
+            len(jd_skills)
+            * 100,
             2
         )
 
-    return score, matched, missing
+    return (
+        score,
+        matched,
+        missing
+    )
+
+
